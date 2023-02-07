@@ -1,15 +1,19 @@
 name: hello
 
-on: push
+on: [push]
+
+env:
+  ARTIFACT_NAME: myartifact
 
 jobs:
-  job1:
-    name: first job
+  main:
     runs-on: ubuntu-latest
     steps:
-      - name: step one
+      - name: Checkout the code
         uses: actions/checkout@v2
-      - name: Python Syntax Checker
-        uses: cclauss/Find-Python-syntax-errors-action@v0.2.0
-
+      - name: Upload the artifact 
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.ARTIFACT_NAME }}
+          path: .
   
