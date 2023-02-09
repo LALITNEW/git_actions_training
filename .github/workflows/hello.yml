@@ -2,18 +2,23 @@ name: hello
 
 on: [push]
 
-env:
-  ARTIFACT_NAME: myartifact
-
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      - name: Upload the artifact 
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ env.ARTIFACT_NAME }}
-          path: .
-  
+      - name: Create python environment
+        uses: actions/setup-python@v1.1.1
+      - name: Lint code
+        run: |
+          flake8 --ignore=E501,E231 *.py
+          pylint --disable=C0301 --disable=C0326 *.py
+      - name: Run unit tests
+        run: |
+        python -m unittest --verbose --failfast
+  build:
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+       
+
