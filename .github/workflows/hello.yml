@@ -24,6 +24,9 @@ jobs:
         run: |
           python -m unittest --verbose --failfast
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+        run: |
+            docker build . --tag ghcr.io/deselikem/hello-docker-gcr-demo:latest
+            docker run ghcr.io/deselikem/hello-docker-gcr-demo:latest
+            docker push ghcr.io/deselikem/hello-docker-gcr-demo:latest
        
 
