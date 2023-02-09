@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      - name: Create python environment
+      - name: Setup Python environment
         uses: actions/setup-python@v1.1.1
       - name: Lint code
         run: |
