@@ -1,6 +1,7 @@
 name: hello
-# this is test request
-on: [push, pull_request]
+
+on: [pull_request]
+
 
 env:
   APPLICATION_NAME: app2
