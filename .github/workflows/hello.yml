@@ -25,9 +25,6 @@ jobs:
         run: |
           python -m unittest --verbose --failfast
 
-      # - name: push image to GitHub Container Registry
-      #   run: docker push ghcr.io/lalitnew/mytest:latest
-
   production:
     runs-on: ubuntu-latest
     environment: production
