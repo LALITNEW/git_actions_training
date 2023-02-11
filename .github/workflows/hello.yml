@@ -1,6 +1,11 @@
 name: hello
+<<<<<<< Updated upstream
 # this is test request
 on: [push, pull_request]
+=======
+#this is test 3
+on: [pull_request]
+>>>>>>> Stashed changes
 
 env:
   APPLICATION_NAME: app2
